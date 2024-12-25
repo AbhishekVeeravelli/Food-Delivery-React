@@ -38,7 +38,7 @@
 16. Tree Shaking algorithm- Removes unused code for you
 17. Different bundlers for dev and prod
 
---> Read parcel documentation for more info
+Read parcel documentation for more info
 
 --> In react there are two types of export and import
 
