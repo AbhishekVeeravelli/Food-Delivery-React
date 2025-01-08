@@ -59,9 +59,3 @@ They are normal JS functions
 
 1.  UseState()-- This is used to generate super powerful state to react variables
 2.  UseEffect()
-
-
-
-
-
-
