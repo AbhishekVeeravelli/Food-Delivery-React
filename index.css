@@ -49,3 +49,20 @@
   margin: 10px;
   cursor: pointer;
 }
+
+/* .searchbar {
+  margin-right: 20px; 
+  padding: 8px 15px; 
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  outline: none; 
+  width: 250px; 
+  float: right; 
+  box-sizing: border-box; 
+}
+
+.searchbar:focus {
+  border-color: #000; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+} */
