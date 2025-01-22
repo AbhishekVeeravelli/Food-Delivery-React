@@ -16,7 +16,7 @@ const Body = () => {
   }, []);
   const fetchData = async () => {
     const data = await fetch(
-      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.406498&lng=78.47724389999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
+      'https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.406498&lng=78.47724389999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
     );
     const json = await data.json();
     console.log(json);
@@ -72,8 +72,8 @@ const Body = () => {
         </button>
       </div>
       <div className="rest-container">
-        {filteredRestaurant.map((restaurant, index) => (
-          <RestaurantCard key={index} resData={restaurant.info} />
+        {filteredRestaurant.map((restaurant) => (
+          <RestaurantCard key={restaurant.info.id} resData={restaurant.info} />
         ))}
       </div>
     </div>
