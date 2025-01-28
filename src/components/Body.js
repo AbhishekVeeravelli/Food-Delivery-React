@@ -2,14 +2,13 @@ import RestaurantCard from './RestaurantCard';
 import { useEffect, useState } from 'react';
 import NewList from './NewList';
 import Shimmer from './Shimmer';
+import { Link } from 'react-router';
 const Body = () => {
   //React super powered variable called 'Local  State Variable'
   const [Restaurantlist, setRestaurantlist] = useState([]);
   const [filteredRestaurant, setfilteredRestaurant] = useState([]);
   //Whenever state variables are updated react triggers a recoinciliation cycle(re-renders the component)
   const [searchText, setSearchText] = useState('');
-
-  console.log('Body Rendered');
 
   useEffect(() => {
     fetchData();
@@ -73,7 +72,12 @@ const Body = () => {
       </div>
       <div className="rest-container">
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant.info} />
+          <Link
+            key={restaurant.info.id}
+            to={'restaurants/' + restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant.info} />
+          </Link>
         ))}
       </div>
     </div>
