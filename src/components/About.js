@@ -7,7 +7,7 @@ class About extends Component {
     super(props);
   }
   componentDidMount() {
-    console.log("This is component did mount")
+    console.log('This is component did mount');
   }
   render() {
     return (

@@ -1,8 +1,9 @@
 import RestaurantCard from './RestaurantCard';
 import { useEffect, useState } from 'react';
-import NewList from './NewList';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router';
+import useOnlineStatus from '../utils/useOnlineStatus';
+
 const Body = () => {
   //React super powered variable called 'Local  State Variable'
   const [Restaurantlist, setRestaurantlist] = useState([]);
@@ -27,6 +28,13 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you are Offline!! Please check your internet connection
+      </h1>
+    );
 
   //conditional rendering
   return Restaurantlist.length === 0 ? (

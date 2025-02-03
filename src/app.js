@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/header';
 import Body from './components/Body';
@@ -7,12 +7,10 @@ import About from './components/About';
 import Contactus from './components/contactus';
 import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
+import Shimmer from './components/Shimmer';
+//import Grocerry from './components/Grocerry';
 
-const styleCard = {
-  backgroundColor: '#f0f0f0',
-};
-
-//not using the key(not acceptable)<<<<<<<<<<<index as key<<<<<<<<<<<<<unique id(best practice);
+const Grocerry = lazy(() => import('./components/Grocerry'));
 
 const AppLayout = () => {
   return (
@@ -43,6 +41,14 @@ const appRouter = createBrowserRouter([
       {
         path: '/restaurants/:resId',
         element: <RestaurantMenu />,
+      },
+      {
+        path: '/grocerry',
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Grocerry />
+          </Suspense>
+        ),
       },
     ],
     errorElement: <Error />,
