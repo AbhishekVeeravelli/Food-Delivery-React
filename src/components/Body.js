@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import { withPromotedLabel } from './RestaurantCard';
 
 const Body = () => {
   //React super powered variable called 'Local  State Variable'
@@ -10,6 +11,10 @@ const Body = () => {
   const [filteredRestaurant, setfilteredRestaurant] = useState([]);
   //Whenever state variables are updated react triggers a recoinciliation cycle(re-renders the component)
   const [searchText, setSearchText] = useState('');
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
+  console.log('Body Rendered', Restaurantlist);
 
   useEffect(() => {
     fetchData();
@@ -41,17 +46,18 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
+            className="px-4 py-2 bg-green-200 m-4 rounded-lg"
             onClick={() => {
               //filter the restaurants and update the UI
               console.log(searchText);
@@ -64,27 +70,34 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            //Add filter such that the list has to be filtered based on the rating of the restaurant
-            const filteredlist = Restaurantlist.filter(
-              (res) => res.info.avgRating > 4.5
-            );
-            //console.log('Top-rated restaurants' + Restaurantlist);
-            setRestaurantlist(filteredlist);
-          }}
-        >
-          Top-rated Restaurant
-        </button>
+        <div className="search m-4 p-4 flex items-center">
+          <button
+            className="px-4 py-2 bg-gray-200 rounded-lg"
+            onClick={() => {
+              //Add filter such that the list has to be filtered based on the rating of the restaurant
+              const filteredlist = Restaurantlist.filter(
+                (res) => res.info.avgRating > 4.2
+              );
+              //console.log('Top-rated restaurants' + Restaurantlist);
+              setRestaurantlist(filteredlist);
+            }}
+          >
+            Top-rated Restaurant
+          </button>
+        </div>
       </div>
-      <div className="rest-container">
+      <div className="flex flex-wrap">
         {filteredRestaurant.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={'restaurants/' + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant.info} />
+            {/*If a restaurant is promoted add a promoted label to it otherwise dont add */}
+            {restaurant.data?.promoted ? (
+              <RestaurantCardPromoted resData={restaurant.info} />
+            ) : (
+              <RestaurantCard resData={restaurant.info} />
+            )}
           </Link>
         ))}
       </div>

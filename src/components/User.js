@@ -8,7 +8,7 @@ const User = ({ name }) => {
   }, []);
 
   return (
-    <div className="user-card">
+    <div className="user-card m-4 p-4 bg-gray-100 rounded-lg">
       <h1>count={count}</h1>
       <h1>count2={count2}</h1>
       <h2>Name: {name}</h2>
@@ -17,5 +17,5 @@ const User = ({ name }) => {
     </div>
   );
 };
-
+ 
 export default User;
