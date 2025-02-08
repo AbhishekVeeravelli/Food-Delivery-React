@@ -1,9 +1,10 @@
 import RestaurantCard from './RestaurantCard';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import { withPromotedLabel } from './RestaurantCard';
+import UserContext from '../utils/userContext';
 
 const Body = () => {
   //React super powered variable called 'Local  State Variable'
@@ -14,8 +15,6 @@ const Body = () => {
 
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
-  console.log('Body Rendered', Restaurantlist);
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -24,7 +23,6 @@ const Body = () => {
       'https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.406498&lng=78.47724389999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
     );
     const json = await data.json();
-    console.log(json);
     setRestaurantlist(
       //Optional chaining
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -40,6 +38,8 @@ const Body = () => {
         Looks like you are Offline!! Please check your internet connection
       </h1>
     );
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   //conditional rendering
   return Restaurantlist.length === 0 ? (
@@ -60,7 +60,6 @@ const Body = () => {
             className="px-4 py-2 bg-green-200 m-4 rounded-lg"
             onClick={() => {
               //filter the restaurants and update the UI
-              console.log(searchText);
               const filtereRestaurant = Restaurantlist.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
@@ -78,12 +77,19 @@ const Body = () => {
               const filteredlist = Restaurantlist.filter(
                 (res) => res.info.avgRating > 4.2
               );
-              //console.log('Top-rated restaurants' + Restaurantlist);
               setRestaurantlist(filteredlist);
             }}
           >
             Top-rated Restaurant
           </button>
+        </div>
+        <div className="search m-4 p-4 flex items-center">
+          <label>UserName : </label>
+          <input
+            className="border border-black p-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          ></input>
         </div>
       </div>
       <div className="flex flex-wrap">
