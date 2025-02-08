@@ -127,3 +127,7 @@ React lifecycle if there are two components
 - On demand Loading
 
 The funda of all this names is to split the application in logical bundles to minimize the size of the application. If we have multiple components we can make each component as a each bundle and deploy 
+
+----------------------------------------------------------------------------------------------------------------------------------
+- Controlled and Uncontrolled Components
+- When a parent controls the child component then it is called Controlled Component
