@@ -119,15 +119,33 @@ React lifecycle if there are two components
 - render(API data)
   - HTML is loaded with API data
 - ComponentDidiUpdate
-----------------------------------------------------------------------------------------------------------------------------------
+
+---
+
 - Dynamic Bundling
 - Lazy loading
 - Code Splitting
 - Chunking
 - On demand Loading
 
-The funda of all this names is to split the application in logical bundles to minimize the size of the application. If we have multiple components we can make each component as a each bundle and deploy 
+The funda of all this names is to split the application in logical bundles to minimize the size of the application. If we have multiple components we can make each component as a each bundle and deploy
 
-----------------------------------------------------------------------------------------------------------------------------------
+---
+
 - Controlled and Uncontrolled Components
 - When a parent controls the child component then it is called Controlled Component
+
+------------------------------------------------------REDUX-----------------------------------------------------------------------
+# Redux Toolkit
+- Redux store is a big java script object and it is kept in a golbal central space
+- So Redux has multiple slices inside it where each slice is a component for example the slices are cart,user,etc.
+- We cannot dirctly use a slice. Let's say we want to modify a cart slice it can be modified using a dispatch action which calls a reducer function then the function internally updates the cart slice inside the redux object. This function is basically known as reducer. This operation is known as writing data
+- To Read data from the slice we use "selector". This selector will modify the react component. Here the selector will modify the store component that means it updates the count of items in store. This phenomenon is called as "Subscribing to the Store"
+
+- Install Redux tool kit(@reduxjs/toolkit) and react-redux
+- Build our own store
+- Connect store to the app
+- Create card slice 
+- Dispatch(action)
+- Selector
+
