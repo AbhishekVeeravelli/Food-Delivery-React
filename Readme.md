@@ -39,21 +39,6 @@ Parcel Bundler
 
 JavaScript (ES6+), HTML, CSS
 
-📚 What I Learned (High-Level Summary)
-🌿 React Fundamentals
-
-JSX, Components, Props, State
-
-Controlled vs Uncontrolled components
-
-React lifecycle (mount → update → unmount)
-
-Hooks:
-
-useState – state management
-
-useEffect – side effects & dependency arrays
-
 🧭 Routing
 
 Client-side routing using React Router Provider
@@ -79,14 +64,6 @@ Parcel provides:
 🖼️ Image optimization
 
 ⏱️ Caching for faster builds
-
-🗂️ Redux Toolkit
-
-Central store with multiple slices (cart, user, etc.)
-
-dispatch() → update store through reducers
-
-useSelector() → subscribe to store changes
 
 Clean, structured state management
 
