@@ -1,151 +1,134 @@
-# Learning React from Scratch and building a project from scratch
+🍽️ Food Ordering App — React Project
 
-# Food Ordering App
+A modern, responsive food ordering application built while learning React from scratch. This project demonstrates core React concepts, routing, state management, Redux Toolkit, and efficient bundling using Parcel.
 
-- Header
-- - Logo
-- - Nav-items
-- Body
-- -Search
-- -RestrauntCard
-- -Img
-- Name of Res,Start Rating,cuisine, delivery time;
-- Footer
-- -Copyright
-- -Links
-- - Address
-- - Contact
+🚀 Features
 
-# Description about React
+🔍 Search restaurants
 
-# Parcel
+🍱 Restaurant cards with name, rating, cuisine, delivery time
 
-1. Dev build
-2. Local Server
-3. Automatically refreshing the page=>HMR(Hard Module Replacement)
-4. Parcel uses the file watching algorithm and written in c++
-5. Caching-Faster builds
-6. Image optimization
-7. Minification of file
-8. Bundling
-9. Compress the files
-10. Consistent hashing
-11. Code splitting
-12. Differential bundling-It makes app run smoothly in th older browsers as well
-13. Diagnostics behind the scene
-14. Error Handling
-15. Helps in host the website in https
-16. Tree Shaking algorithm- Removes unused code for you
-17. Different bundlers for dev and prod
+🖼️ Image rendering & dynamic UI
 
-Read parcel documentation for more info
+🧭 Client-side routing for navigation
 
---> In react there are two types of export and import
+🛒 Add to cart (Redux)
 
---> 1st type is default export/import
+📄 Reusable components for Header, Footer, and Body
 
-export default Component
-import component from "path"
+⚡ Fast development with Parcel (HMR, bundling, optimization
 
--->2nd type is named export/import
+🧱 Project Structure
+src/
+ ├── components/
+ ├── pages/
+ ├── redux/
+ ├── utils/
+ ├── App.js
+ └── index.js
 
-export const Component;
-import {Component} from "path"
+ 🛠️ Tech Stack
 
-#React Hooks
-It is a normal JS function which is a utility function which give you the utilities
+React.js
 
-They are normal JS functions
+React Router
 
-1.  UseState()-- This is used to generate super powerful state to react variables
-2.  UseEffect()-- UseEffect is used after every render of that component
+Redux Toolkit
 
-Using dependency array is not mandatory. But when we call the useEffect without a dependency array it renders everytime the component is rendered
+Parcel Bundler
 
-- If dependency array is empty = []=>useEffect is called on initial render(just once)
-- If we put something in the dependency array it will be only called when the dependency changes
-- If dependency array is [btnNameReact] then useEffect is called everytime btnNameReact is updated
-- Router provider provides the routing configuration to the app
-- To identify a hook the common convention in the industry is to find for "use"
-- React is a single page application.The reason behind this is it follows Client Side Routing. In Client Side Routing whenever the home page is loaded it gets the code for all the other pages and when we switch the tabs aas the applications is already loaded it display the pages without delay/latency.
-- There are two types of routing in any web application
-  1. Client Side Routing
-  2. Server Side Routing:
+JavaScript (ES6+), HTML, CSS
 
-React lifecycle if there is only one component
+📚 What I Learned (High-Level Summary)
+🌿 React Fundamentals
 
-- Parent Constructor
-- Parent Render
+JSX, Components, Props, State
 
-- Child1 Constructor
-- Child1 Render
-- Child1 ComponenDidMount
+Controlled vs Uncontrolled components
 
-- Parent ComponentDidMount
+React lifecycle (mount → update → unmount)
 
-React lifecycle if there are two components
+Hooks:
 
-- Parent Constructor
-- Parent Render
+useState – state management
 
-------Render Phase---------
+useEffect – side effects & dependency arrays
 
-- Child1 Constructor
-- Child1 Render
+🧭 Routing
 
-- Child2 Constructor
-- Child2 Render
+Client-side routing using React Router Provider
 
-------------Commit Phase-----------------
+SPA behavior (no full page reloads)
 
-- Child1 ComponenDidMount
-- Child2 ComponenDidMount
+⚙️ Parcel (Bundler)
 
-- Parent ComponentDidMount
+Parcel provides:
 
-- The reason behind the React is batching up the commit phase when having more than two children is to optimize the execution. This is because when commit phase starts React updates the DOM and we know that DOM manipulation is the expensive thing in updating the component.
+⚡ HMR (Hot Module Replacement)
 
------MOUNTING--------
+⚡ Fast dev server
 
-- Constructor(dummy)
-- Render(dummy)
-  - <HTML dummy>
-- ComponentDidMount
-  - API call
-  - this.setState (state variable is updated)
+📦 Bundling & minification
 
---------Update Cycle---------
+🧹 Tree shaking
 
-- render(API data)
-  - HTML is loaded with API data
-- ComponentDidiUpdate
+🧩 Code splitting
 
----
+📤 Automatic HTTPS
 
-- Dynamic Bundling
-- Lazy loading
-- Code Splitting
-- Chunking
-- On demand Loading
+🖼️ Image optimization
 
-The funda of all this names is to split the application in logical bundles to minimize the size of the application. If we have multiple components we can make each component as a each bundle and deploy
+⏱️ Caching for faster builds
 
----
+🗂️ Redux Toolkit
 
-- Controlled and Uncontrolled Components
-- When a parent controls the child component then it is called Controlled Component
+Central store with multiple slices (cart, user, etc.)
 
-------------------------------------------------------REDUX-----------------------------------------------------------------------
-# Redux Toolkit
-- Redux store is a big java script object and it is kept in a golbal central space
-- So Redux has multiple slices inside it where each slice is a component for example the slices are cart,user,etc.
-- We cannot dirctly use a slice. Let's say we want to modify a cart slice it can be modified using a dispatch action which calls a reducer function then the function internally updates the cart slice inside the redux object. This function is basically known as reducer. This operation is known as writing data
-- To Read data from the slice we use "selector". This selector will modify the react component. Here the selector will modify the store component that means it updates the count of items in store. This phenomenon is called as "Subscribing to the Store"
+dispatch() → update store through reducers
 
-- Install Redux tool kit(@reduxjs/toolkit) and react-redux
-- Build our own store
-- Connect store to the app
-- Create card slice 
-- Dispatch(action)
-- Selector
+useSelector() → subscribe to store changes
 
+Clean, structured state management
+
+🏗️ Key Concepts Implemented
+🔄 Component Lifecycle
+
+Mounting → Rendering → Commit → Update
+Handled API calls inside useEffect.
+
+🧩 Code Splitting & Lazy Loading
+
+Dynamic import
+
+On-demand loading for optimized performance
+
+▶️ Getting Started
+1️⃣ Install dependencies
+npm install
+
+2️⃣ Start development server
+npm start
+
+3️⃣ Build for production
+npm run build
+
+📦 Deployment
+
+The project can be deployed using:
+
+Netlify
+
+Vercel
+
+GitHub Pages
+
+Or any static hosting that supports SPA routing
+
+📘 Developer Notes
+
+If you want to see my detailed React learning notes, check here:
+👉 NOTES.md (Create a new file and paste your notes in it)
+
+🙌 Acknowledgements
+
+This project was built as part of my journey to master React from scratch. It helped me understand real-world concepts like routing, state management, Redux, and performance optimization.
